@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Class 5 walk through</title>
+        <style>
+
+            #container > div {
+                width: 200px;
+                height: 100px;
+                background-color: gray;
+            }
+
+            .blue {
+                border: 5px solid blue;
+            }
+
+            h2 {
+                font-family: 'Arial', sans-serif;
+                text-align: left;
+                font-size: 1em;
+                margin: 0;
+            }
+
+
+            #hover_div {
+                background-color: red;
+                height: 100px;
+                width: 100px;
+            }
+
+
+            .toggle_divs {
+                background-color: gray;
+                height: 100px;
+                width: 100px;
+                margin-top: 10px;
+            }
+
+            .button_container {
+                width: 100%;
+                margin: 30px auto;
+                max-width: 800px;
+            }
+
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                margin: 0 auto;
+                max-width: 800px;
+            }
+
+            .image_container {
+                flex-basis: calc(25% - 10px);
+                margin: 5px;
+                text-align: center; 
+                position: relative;
+                cursor: pointer;
+            }
+
+            img {
+                width: 100%;
+                object-fit: cover;
+                height: 100%;
+            }
+
+            .border_class {
+                border: 5px solid gold;
+                box-sizing: border-box;
+            }
+            
+
+            .bioContainer {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 10px;
+                background-color: rgba(255,255,255,0.8);
+                width: 100%;
+            }
+
+            .no-display {
+                display: none;
+            }
+
+            .image_container:hover {
+                opacity: 0.5;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="button_container">
+            <input type="button" id="All" value="All">
+            <input type="button" id="Adjuncts" value="Adjuncts">
+            <input type="button" id="Professors" value="Professors"> 
+            <input type="button" id="Data" value="Data">
+            <input type="button" id="Graphics" value="Graphics">
+        </div>
+
+
+
+
+
+
+        <div class="container">
+            <div class="image_container adjuncts data">
+            <!-- <div class="data"> -->
+                <img src="https://www.journalism.cuny.edu/wp-content/uploads/2023/12/JaclynJeffrey-Wilensky-400x600-bw.jpg">
+                <div class="bioContainer no-display">
+                    <h2>Jaclyn Jeffrey-Wilensky</h2>
+                </div>
+            </div>    
+            <div class="image_container adjuncts graphics">
+            <!-- <div class="graphics"> -->
+                <img src="https://www.journalism.cuny.edu/wp-content/uploads/2023/12/RahulMukherjee-400x600-bw.jpg">
+                <div class="bioContainer no-display">
+                    <h2>Rahul Mukherjee</h2>
+                </div>
+            </div>    
+            <div class="image_container adjuncts data">
+            <!-- <div class="data"> -->
+                <img src="https://www.journalism.cuny.edu/wp-content/uploads/2021/08/taylorEldridge-bw.jpg">
+                <div class="bioContainer no-display">
+                    <h2>Taylor Eldridge</h2>
+                </div>
+            </div>    
+            <div class="image_container adjuncts data">
+            <!-- <div class="data"> -->
+                <img src="https://www.journalism.cuny.edu/wp-content/uploads/2021/08/Adrian-Garcia-Headshot-2018-bw.jpg">
+                <div class="bioContainer no-display">
+                    <h2>Adrian Garcia</h2>
+                </div>
+            </div>    
+            <div class="image_container professors data">
+            <!-- <div class="data"> -->
+                <img src="https://www.journalism.cuny.edu/wp-content/uploads/2014/09/Lam-Thuy-Vo-Feb.-2023-400x600-bw.jpeg">
+                <div class="bioContainer no-display">
+                    <h2>Lam Thuy Vo</h2>
+                </div>
+            </div>    
+            <div class="image_container adjuncts graphics">
+            <!-- <div class="graphics"> -->
+                <img src="https://www.journalism.cuny.edu/wp-content/uploads/2021/03/alana-pipe-headshot-400x505-bw.jpeg">
+                <div class="bioContainer no-display">
+                    <h2>Alana Pipe</h2>
+                </div>
+            </div>    
+            <div class="image_container adjuncts graphics">
+            <!-- <div class="graphics"> -->
+                <img src="https://www.journalism.cuny.edu/wp-content/uploads/2017/07/tc_mccarthy-copy-400x600-bw.jpeg">
+                <div class="bioContainer no-display">
+                    <h2>TC McCarthy</h2>
+                </div>
+            </div>    
+            <div class="image_container professors data">
+            <!-- <div class="data"> -->
+                <img src="https://www.journalism.cuny.edu/wp-content/uploads/2008/10/sandeep-headshot-400x400-400x400-bw.jpg">
+                <div class="bioContainer no-display">
+                    <h2>Sandeep Junnarkar</h2>
+                </div>
+            </div>   
+        </div>
+
+
+
+
+
+        
+        <script>
+
+            // select the adjunct divs
+            let adjuncts = document.getElementsByClassName('adjuncts');
+
+            let data = document.getElementsByClassName('data');
+
+            let graphics = document.getElementsByClassName('graphics');
+
+            let professors = document.getElementsByClassName('professors');
+
+           
+
+            // select all the buttons
+            let adjuncts_button = document.getElementById('Adjuncts');
+            let professors_button = document.getElementById('Professors');
+            let data_button = document.getElementById('Data');
+            let graphics_button = document.getElementById('Graphics');
+            let all = document.getElementById('All');
+
+
+
+
+            //if adjunct is clicked, add border_class to the list of classes and remove it from the professors
+
+            adjuncts_button.onclick = function(){
+                for (let i = 0; i < adjuncts.length; i++) {
+                    adjuncts[i].classList.add('border_class');
+                }
+                for (let i = 0; i < professors.length; i++) {
+                    professors[i].classList.remove('border_class');
+                }
+            }
+            //if professors is clicked, add border_class to the list of classes and remove it from the adjuncts
+
+            professors_button.onclick = function(){
+                for (let i = 0; i < professors.length; i++) {
+                    professors[i].classList.add('border_class');
+                }
+                for (let i = 0; i < adjuncts.length; i++) {
+                    adjuncts[i].classList.remove('border_class');
+                }
+            }
+
+            //if all is clicked, remove border_class from all divs
+
+            all.onclick = function(){
+                for (let i = 0; i < professors.length; i++) {
+                    professors[i].classList.add('border_class');
+                }
+                for (let i = 0; i < adjuncts.length; i++) {
+                    adjuncts[i].classList.add('border_class');
+                }
+
+            }
+
+            graphics_button.onclick = function(){
+                for (let i = 0; i < graphics.length; i++) {
+                    graphics[i].classList.add('border_class');
+                }
+                for (let i = 0; i < data.length; i++) {
+                    data[i].classList.remove('border_class');
+                }}
+
+            data_button.onclick = function(){
+                for (let i = 0; i < data.length; i++) {
+                    data[i].classList.add('border_class');
+                }
+                for (let i = 0; i < graphics.length; i++) {
+                    graphics[i].classList.remove('border_class');
+                }}
+
+            let divs = document.getElementsByClassName('image_container');
+
+
+
+
+for (let i = 0; i < divs.length; i++) {
+
+
+    let bioContainer = divs[i].querySelector('.bioContainer');
+
+  
+
+    divs[i].addEventListener('mouseenter',function(){
+
+        bioContainer.classList.remove('no-display');
+    });   
+    divs[i].addEventListener('mouseleave',function(){
+
+        
+        bioContainer.classList.add('no-display');
+    });   
+}
+
+
+
+
+        </script>
+
+    </body>
+</html>
